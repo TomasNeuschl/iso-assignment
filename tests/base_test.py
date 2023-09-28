@@ -24,9 +24,10 @@ class BaseTest(TestCase):
              "da": "Slovenien", "de": "Slowenien", "el": "Σλοβενία", "en": "Slovenia", "eo": "Slovenio",
              "es": "Eslovenia", "et": "Sloveenia", "eu": "Eslovenia", "fi": "Slovenia", "fr": "Slovénie",
              "hr": "Slovenija", "hu": "Szlovénia", "hy": "Սլովենիա", "it": "Slovenia", "ja": "スロベニア",
-             "ko": "슬로베니아", "lt": "Slovėnija", "nl": "Slovenië", "no": "Slovenia", "pl": "Słowenia", "pt": "Eslovênia",
-             "ro": "Slovenia", "ru": "Словения", "sk": "Slovinsko", "sl": "Slovenija", "sr": "Slovenija",
-             "sv": "Slovenien", "th": "สโลวีเนีย", "uk": "Словенія", "zh": "斯洛文尼亚", "zh-tw": "斯洛維尼亞"},
+             "ko": "슬로베니아", "lt": "Slovėnija", "nl": "Slovenië", "no": "Slovenia", "pl": "Słowenia",
+             "pt": "Eslovênia", "ro": "Slovenia", "ru": "Словения", "sk": "Slovinsko", "sl": "Slovenija",
+             "sr": "Slovenija", "sv": "Slovenien", "th": "สโลวีเนีย", "uk": "Словенія", "zh": "斯洛文尼亚",
+             "zh-tw": "斯洛維尼亞"},
         ]
 
     def tearDown(self):

@@ -2,7 +2,7 @@ import redis
 from fastapi import FastAPI, HTTPException
 
 from app.iso_matcher.iso_matcher import ISOMatcher
-from app.iso_matcher.serializers.match_country import CountryMatchResponse, CountryMatchRequest
+from app.iso_matcher.serializers.match_country import CountryMatchRequest, CountryMatchResponse
 from app.redis_chacher import cache_result
 
 app = FastAPI()

@@ -16,9 +16,8 @@ class ISOMatcher:
         file_path = './data/data.json'
 
         # Open and read the JSON file
-        with open(file_path, 'r') as json_file:
-            data = json.load(json_file)
-        return data
+        with open(file_path) as json_file:
+            return json.load(json_file)
 
     def match_country(self):
         self.success = False
@@ -29,3 +28,4 @@ class ISOMatcher:
                         self.matches.append(translation)
                 self.success = True
                 return self
+        return self

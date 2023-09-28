@@ -5,6 +5,39 @@ description = ""
 authors = ["Tomáš Neuschl <tm.neu003@gmail.com>"]
 readme = "README.md"
 
+
+[tool.ruff]
+fix = true
+line-length = 120
+select = [
+  "B", # flake8-bugbear
+  "C4", # flake8-comprehensions
+  "C90", # mccabe
+  "COM", # flake8-commas
+  "DJ", # flake8-django
+  "E", # pycodestyle errors
+  "EM", # flake8-errmsg
+  "F", # pyflakes
+  "I", # isort
+  "INP001", # flake8-no-pep420
+  "ISC", # flake8-implicit-str-concat
+  "N", # pep8-naming
+  "PERF", # perflint
+  "PIE", # flake8-pie
+  "RET", # flake8-return
+  "RSE", # flake8-raise
+  "RUF", # ruff
+  "SIM", # flake8-simplify
+  "T10", # flake8-debugger
+  "TCH", # flake8-type-checking
+  "TID", # flake8-tidy-imports
+  "UP", # pyupgrade
+  "W", # pycodestyle warnings
+]
+
+[tool.flake8]
+max-line-length = 120
+
 [tool.poetry.dependencies]
 python = "^3.10"
 fastapi = "^0.103.1"
@@ -12,6 +45,8 @@ uvicorn = "^0.23.2"
 redis = "^5.0.1"
 httpx = "^0.25.0"
 fakeredis = "^2.19.0"
+ruff = "^0.0.291"
+pytest = "^7.4.2"
 
 
 [build-system]

@@ -18,8 +18,8 @@ class TestMain(BaseTest):
                 "Szlovákia",
                 "Belgrade",
                 "España",
-                "Nizozemsko"
-            ]
+                "Nizozemsko",
+            ],
         }
 
         response = self.client.post("/match_country", json=data)
@@ -28,7 +28,7 @@ class TestMain(BaseTest):
         self.assertEqual(response.json(), {
             "iso": "svk",
             "match_count": 3,
-            "matches": ["Slowakei", "Slovaška", "Szlovákia"]
+            "matches": ["Slowakei", "Slovaška", "Szlovákia"],
         })
 
     def test_invalid_iso(self):
@@ -36,7 +36,7 @@ class TestMain(BaseTest):
             "iso": "svkx",
             "countries": [
                 "iran",
-            ]
+            ],
         }
 
         response = self.client.post("/match_country", json=data)
@@ -48,7 +48,7 @@ class TestMain(BaseTest):
             "123": "svk",
             "countries": [
                 "iran",
-            ]
+            ],
         }
 
         response = self.client.post("/match_country", json=data)
@@ -66,7 +66,7 @@ class TestMain(BaseTest):
         data = {
             "iso": "abc",
             "countries": [
-            ]
+            ],
         }
 
         response = self.client.post("/match_country", json=data)
@@ -79,7 +79,7 @@ class TestMain(BaseTest):
             "iso": "svk",
             "countries": [
                 "iran",
-            ]
+            ],
         }
 
         response = self.client.post("/match_country", json=data)
