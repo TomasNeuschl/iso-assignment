@@ -1,5 +1,6 @@
 import redis
 from fastapi import FastAPI, HTTPException
+from starlette.responses import RedirectResponse
 
 from app.iso_matcher.iso_matcher import ISOMatcher
 from app.iso_matcher.serializers.match_country import CountryMatchRequest, CountryMatchResponse
@@ -16,9 +17,9 @@ redis_db = 0
 redis_client = redis.Redis(host=redis_host, port=redis_port, db=redis_db)
 
 
-@app.get("/")
+@app.get("/", include_in_schema=False)
 async def root():
-    return {"message": "Hello World"}
+    return RedirectResponse(url="/docs")
 
 
 @app.post("/match_country", response_model=CountryMatchResponse)
