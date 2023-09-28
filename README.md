@@ -5,7 +5,7 @@ is microservice, that is able to take a country ISO code and a list of country n
 ## How to run
 1. Clone the repository
 2. Run `docker-compose up` in the root directory
-3. Open `http://localhost:8080/` in your browser
+3. Open `http://localhost:8000/` in your browser
 4. Use the service
 5. Run `docker-compose down` in the root directory to stop the service
 
