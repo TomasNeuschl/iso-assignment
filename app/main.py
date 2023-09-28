@@ -9,7 +9,7 @@ from app.redis_chacher import cache_result
 app = FastAPI()
 
 # Configure the Redis client
-redis_host = "127.0.0.1"
+redis_host = "redis"
 redis_port = 6379
 redis_db = 0
 
