@@ -5,14 +5,14 @@ from tests.base_test import BaseTest
 class TestISOMatcher(BaseTest):
     def test_valid_iso_code(self):
         result = ["Slowakei", "Slovaška", "Szlovákia"]
-        matcher = ISOMatcher()
-        success, matches = matcher.match_country('svk', result)
+        matcher = ISOMatcher('svk', result)
+        matcher.match_country()
 
-        self.assertEqual(success, True)
-        self.assertEqual(matches, result)
+        self.assertEqual(matcher.success, True)
+        self.assertEqual(matcher.matches, result)
 
     def test_invalid_iso_code(self):
-        matcher = ISOMatcher()
-        success, matches = matcher.match_country('abcd', ['Slovaška', 'Slovakien', 'Szlovákia'])
-        self.assertEqual(success, False)
-        self.assertEqual(matches, [])
+        matcher = ISOMatcher('abcd', ['Slovaška', 'Slovakien', 'Szlovákia'])
+        matcher.match_country()
+        self.assertEqual(matcher.success, False)
+        self.assertEqual(matcher.matches, [])

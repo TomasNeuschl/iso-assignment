@@ -4,8 +4,12 @@ import json
 class ISOMatcher:
     countries_table = None
 
-    def __init__(self):
+    def __init__(self, iso_code, countries):
         self.countries_table = self._load_countries()
+        self.iso_code = iso_code
+        self.countries = countries
+        self.success = None
+        self.matches = []
 
     @staticmethod
     def _load_countries():
@@ -16,12 +20,12 @@ class ISOMatcher:
             data = json.load(json_file)
         return data
 
-    def match_country(self, iso_code, countries):
-        matches = []
+    def match_country(self):
+        self.success = False
         for country in self.countries_table:
-            if country['alpha3'] == iso_code:
-                for translation in countries:
+            if country['alpha3'] == self.iso_code:
+                for translation in self.countries:
                     if translation in country.values():
-                        matches.append(translation)
-                return True, matches
-        return False, matches
+                        self.matches.append(translation)
+                self.success = True
+                return self

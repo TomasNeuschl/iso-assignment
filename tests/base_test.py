@@ -1,14 +1,17 @@
 from unittest import TestCase
 from unittest.mock import patch
 
+import fakeredis
+
 
 class BaseTest(TestCase):
     def setUp(self):
         super().setUp()
 
-        salutation_patch = patch(
+        patch("redis.Redis", fakeredis.FakeStrictRedis).start()
+        data_patch = patch(
             'app.iso_matcher.iso_matcher.ISOMatcher._load_countries').start()
-        salutation_patch.return_value = [
+        data_patch.return_value = [
             {"id": 703, "alpha2": "sk", "alpha3": "svk", "ar": "سلوفاكيا", "bg": "Словакия", "cs": "Slovensko",
              "da": "Slovakiet", "de": "Slowakei", "el": "Σλοβακία", "en": "Slovakia", "eo": "Slovakio",
              "es": "Eslovaquia", "et": "Slovakkia", "eu": "Eslovakia", "fi": "Slovakia", "fr": "Slovaquie",
@@ -25,3 +28,7 @@ class BaseTest(TestCase):
              "ro": "Slovenia", "ru": "Словения", "sk": "Slovinsko", "sl": "Slovenija", "sr": "Slovenija",
              "sv": "Slovenien", "th": "สโลวีเนีย", "uk": "Словенія", "zh": "斯洛文尼亚", "zh-tw": "斯洛維尼亞"},
         ]
+
+    def tearDown(self):
+        super().tearDown()
+        patch.stopall()
