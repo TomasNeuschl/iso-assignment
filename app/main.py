@@ -39,7 +39,6 @@ async def match_country(request_data: CountryMatchRequest):
         return {
             "iso": iso,
             "match_count": len(matcher.matches),
-            "matches": matcher.matches
+            "matches": matcher.matches,
         }
-    else:
-        raise HTTPException(status_code=404, detail="ISO code not found in the list of countries")
+    raise HTTPException(status_code=404, detail="ISO code not found in the list of countries")
