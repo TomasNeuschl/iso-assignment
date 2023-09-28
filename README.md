@@ -4,6 +4,7 @@ is microservice, that is able to take a country ISO code and a list of country n
 
 ## How to run
 1. Clone the repository
+2. Run 'docer-compose build' in the root directory
 2. Run `docker-compose up` in the root directory
 3. Open `http://localhost:8000/` in your browser
 4. Use the service
