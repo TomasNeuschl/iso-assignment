@@ -16,7 +16,9 @@ async def match_country(request_data: CountryMatchRequest):
     iso = request_data.iso
     countries = request_data.countries
     matcher = ISOMatcher()
-    matches = matcher.match_country(iso, countries)
+    success, matches = matcher.match_country(iso, countries)
+    if not success:
+        raise HTTPException(status_code=404, detail="ISO code does not exist")
     if matches:
         return {
             "iso": iso,

@@ -23,4 +23,5 @@ class ISOMatcher:
                 for translation in countries:
                     if translation in country.values():
                         matches.append(translation)
-        return matches
+                return True, matches
+        return False, matches
