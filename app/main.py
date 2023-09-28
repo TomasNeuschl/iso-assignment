@@ -1,4 +1,7 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
+
+from app.iso_matcher.iso_matcher import ISOMatcher
+from app.iso_matcher.serializers.match_country import CountryMatchResponse, CountryMatchRequest
 
 app = FastAPI()
 
@@ -8,6 +11,17 @@ async def root():
     return {"message": "Hello World"}
 
 
-@app.get("/hello/{name}")
-async def say_hello(name: str):
-    return {"message": f"Hello {name}"}
+@app.post("/match_country", response_model=CountryMatchResponse)
+async def match_country(request_data: CountryMatchRequest):
+    iso = request_data.iso
+    countries = request_data.countries
+    matcher = ISOMatcher()
+    matches = matcher.match_country(iso, countries)
+    if matches:
+        return {
+            "iso": iso,
+            "match_count": len(matches),
+            "matches": matches
+        }
+    else:
+        raise HTTPException(status_code=404, detail="ISO code not found in the list of countries")
